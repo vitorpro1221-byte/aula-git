@@ -1,11 +1,12 @@
 import requests
 
-# Fazendo a requisição GET para um site de testes
-resposta = requests.get("https://httpbin.org/status/404")
+# Fingindo ser um navegador Google Chrome num Windows
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+}
 
-# 1. Verificando o código de status (200 = Sucesso)
-print("Status Code:", resposta.status_code)
+url = "https://httpbin.org/headers"
 
-# 2. Vendo o conteúdo que o site respondeu
-print("\nConteúdo da Resposta:")
+resposta = requests.get(url, headers=headers)
+
 print(resposta.text)
