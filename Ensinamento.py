@@ -12,22 +12,25 @@ def buscar_usuarios(link):
     else:
         print("Requisição falhou")
         return None
-    
+
+def filtrar_usuarios_por_cidade(usuarios):
+    usuarios_filtrados = [] 
+    for usuario in usuarios:
+        nome = usuario['name']
+        username = usuario['username']
+        cidade = usuario['address']['city']
+        cidade_com_apenas_10_ou_mais = len(cidade) >= 10
+        if cidade_com_apenas_10_ou_mais:
+            usuarios_filtrados.append({'nome': nome,
+                                       'username': username,
+                                       'cidade': cidade})
+    return usuarios_filtrados
 
 usuarios = buscar_usuarios("https://jsonplaceholder.typicode.com/users")
+filtro = filtrar_usuarios_por_cidade(usuarios)
 
-if usuarios is not None:
-    for usuario in usuarios:
-        Empresa = usuario['address']['street']
-        Empresa_10 = len(Empresa) >= 10
-        Nome = usuario['name']
-        Username = usuario['username']
-        if Empresa_10:
-            print("Nome:", Nome)
-            print("Username:", Username)
-            print("Cidade:", Empresa)
-            print('-' * 20)
-
-    
-else:
-    print('usuarios veio vazio')
+for usuario in filtro:
+    print('Nome do Usuario:', usuario['nome'])
+    print('Username do Usuario:', usuario['username'])
+    print('Cidade do Usuario:', usuario['cidade'])
+    print('-' * 20)
