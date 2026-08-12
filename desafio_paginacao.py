@@ -1,11 +1,20 @@
-# Exemplo de estrutura do While
-url_base = "http://quotes.toscrape.com"
-url_atual = "/"
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
 
-while url_atual:
-    # 1. Faz o resquest juntando: url_base + url_atual
-    # 2. BeautilfulSoup le a pagina
-    # 3. Faz o loop 'for' para pegar frases e autores (Igual ja fez!)
+drive = webdriver.Chrome()
+drive.get("https://demoqa.com/frames")
 
-    # 4. Busca pelo botão da proxima pagina:
-    botao_proximo = site.find("li", class_="next")
+iframes = drive.find_elements(By.TAG_NAME, "iframe")
+lista_dos_texto_iframe = []
+
+for iframe in iframes:
+    drive.switch_to.frame(iframe)
+    extrair_texto = drive.find_element(By.TAG_NAME, "h1").text
+    drive.switch_to.default_content()
+    lista_dos_texto_iframe.append(extrair_texto)
+print(lista_dos_texto_iframe)
+
+time.sleep(5)
+drive.quit()
+
