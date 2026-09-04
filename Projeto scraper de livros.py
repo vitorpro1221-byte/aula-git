@@ -39,7 +39,6 @@ while continuar:
         else:
             continuar = False
 df = pd.DataFrame(lista_dados)
-print(df)
-df["Avaliação"].fillna("Sem Avaliação")
-df["Preço"].dropna()
+df["Avaliação"] = df["Avaliação"].fillna("Sem Avaliação")
+df = df.dropna(subset=["Preço"])
 df.to_csv("Livros_Tratados.csv", index=False, encoding="utf-8")
