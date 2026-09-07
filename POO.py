@@ -46,7 +46,7 @@ class ContaInvestimento(ContaBancaria):
         self.taxa_imposto = taxa_imposto
 
     def sacar(self, valor):
-        if self.saldo > valor + (valor * self.taxa_imposto):
+        if self.saldo >= valor + (valor * self.taxa_imposto):
             self.saldo -= valor + (valor * self.taxa_imposto)
         else:
             print("SALDO INSUFICIENTE")
