@@ -122,6 +122,22 @@ Demonstra como o Selenium lida com **iframes**.
 ![BeautifulSoup](https://img.shields.io/badge/BeautifulSoup-HTML%20Parser-yellow)
 ![Pandas](https://img.shields.io/badge/Pandas-DataFrames-purple)
 
+Requisitos adicionais:
+
+Google Chrome instalado (para os scripts com Selenium)
+Python 3.x
+▶️ Como executar
+Copy
+python "nome_do_arquivo.py"
+💡 Arquivos com espaço no nome (ex: Projeto scraper de livros.py) precisam estar entre aspas no terminal.
+
+💡 Melhorias futuras
+ Adicionar try/except/finally nos scripts de Selenium para garantir drive.quit() mesmo em erro.
+ Corrigir a URL sem // em primeiro_selenium.py.
+ Padronizar nomes de arquivos (evitar espaços/acentos).
+ Criar requirements.txt para instalação com um único comando.
+ Adicionar testes automatizados para os scrapers.
+
 ## 📦 Instalação
 
 ```bash
